@@ -24,10 +24,10 @@ def compress_img():
         if int(choice) == 0:
             for i in list(images.values()):
                 image_file = Image.open(i)
-                image_file.save(i, quality=int(compression))
+                image_file.save('compressed'+i, quality=int(compression))
                 print(f'Изображение {i} сжато')
         else:
             image = images.get(int(choice))
             image_file = Image.open(image)
-            image_file.save(image, quality=int(compression))
+            image_file.save('compressed'+image, quality=int(compression))
             print(f'Изображение {image} сжато')
