@@ -5,7 +5,7 @@ import csv
 site = urllib.request.urlopen('https://msk.spravker.ru/avtoservisy-avtotehcentry')
 html_content = site.read().decode()
 
-pattern = r"(?:-link\">)(?P<name>[^<]+)(?:[^o]*[^l]*.*\n *(?P<address>[^\n]+))(?:\s*.*>\s*.*>\s*.*>(?:\s*<d[^>]*>(?:\s*.*\s*.*>(?P<phone>[^<]+))?.*>\s*</dl>)(?:\s*<.*>(?:\s*<.*\s*<.*>(?P<workhour>[^<]+))?</dd>)?)?"
+pattern = r"(?:-link\">)(?P<name>[^<]+)(?:[^o]*[^l]*.*\n *)(?P<address>[^\n]+)(?:\s*.*>\s*.*>\s*.*>\s*<d[^>]*>\s*.*\s*.*>(?P<phone>[^<]+).*>\s*</dl>)?(?:\s*<.*>\s*<.*\s*<.*>(?P<workhour>[^<]+)</dd>)?"
 match = re.findall(pattern, html_content)
 
 with open('out_data.csv', 'w', newline='', encoding='utf8') as file:
